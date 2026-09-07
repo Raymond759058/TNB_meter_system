@@ -18,7 +18,7 @@ if (PHP_SAPI === 'cli') {
     $scriptDir = isset($_SERVER['SCRIPT_NAME']) ? str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])) : '';
     $appBase = rtrim(preg_replace('#/(admin|user|auth|cron|config|database)$#', '', $scriptDir), '/');
     if ($appBase === '.') {
-        $appBase = '';
+        $appBase = '/tnb-meter-system';
     }
 }
 define('APP_BASE', $appBase);
