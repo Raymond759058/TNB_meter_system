@@ -1,0 +1,19 @@
+# Meter Watch — root .htaccess
+
+# Never serve directory listings
+Options -Indexes
+
+# Sensible default document
+DirectoryIndex index.php
+
+# Protect config and database folders from direct web access
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/config/.*$
+    RedirectMatch 403 ^/database/.*$
+</IfModule>
+
+# Basic security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>

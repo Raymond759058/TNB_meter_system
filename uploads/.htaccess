@@ -1,0 +1,5 @@
+# Uploaded meter photos are user-supplied — never execute code from here.
+<FilesMatch "\.(php|phtml|php\d)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes
