@@ -139,7 +139,7 @@ function get_photo_url(?string $photoPath): string {
     if (!$photoPath) {
         return '';
     }
-    return str_replace('/tnb-meter-system/tnb-meter-system/', '/tnb-meter-system/', $photoPath);
+    return str_replace('/tnb-meter-system', '/tnb-meter-system', $photoPath);
 }
 
 /** Save an uploaded/captured photo (base64 data URL or $_FILES entry) and return its stored path. */
