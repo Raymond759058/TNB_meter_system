@@ -13,7 +13,7 @@ define('UPLOAD_DIR', __DIR__ . '/../uploads/meter_photos/');
 
 // Detect base path dynamically (e.g. '/tnb-meter-system' under XAMPP htdocs, or '' if at root)
 if (PHP_SAPI === 'cli') {
-    $appBase = '';
+    $appBase = 'https://raymondtanzijian.kolejsynergy.com';
 } else {
     $scriptDir = isset($_SERVER['SCRIPT_NAME']) ? str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])) : '';
     $appBase = rtrim(preg_replace('#/(admin|user|auth|cron|config|database)$#', '', $scriptDir), '/');
