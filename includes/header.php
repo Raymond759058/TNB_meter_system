@@ -10,13 +10,13 @@ $user = current_user();
 <title><?= htmlspecialchars($pageTitle ?? APP_NAME) ?> · <?= APP_NAME ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="<?= url('/assets/css/style.css') ?>">
 </head>
 <body>
 <div id="app">
   <div class="topbar">
     <div class="topbar-row1">
-      <a href="/index.php" class="brand" style="text-decoration:none;color:#fff;">
+      <a href="<?= url('/index.php') ?>" class="brand" style="text-decoration:none;color:#fff;">
         <div class="brand-mark">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
@@ -28,23 +28,23 @@ $user = current_user();
         </div>
       </a>
       <?php if ($user): ?>
-        <a href="/auth/logout.php" class="btn btn-outline btn-sm" style="width:auto;">Log out</a>
+        <a href="<?= url('/auth/logout.php') ?>" class="btn btn-outline btn-sm" style="width:auto;">Log out</a>
       <?php endif; ?>
     </div>
     <?php if ($user): ?>
     <div class="topbar-row2">
       <?php if ($user['role'] === 'admin'): ?>
-        <a href="/admin/dashboard.php" class="nav-link">Dashboard</a>
-        <a href="/admin/history.php" class="nav-link">History</a>
-        <a href="/admin/buildings.php" class="nav-link">Buildings</a>
-        <a href="/admin/meters.php" class="nav-link">Meters</a>
-        <a href="/admin/users.php" class="nav-link">Users</a>
-        <a href="/admin/alerts.php" class="nav-link">Alerts</a>
-        <a href="/admin/settings.php" class="nav-link">Settings</a>
+        <a href="<?= url('/admin/dashboard.php') ?>" class="nav-link">Dashboard</a>
+        <a href="<?= url('/admin/history.php') ?>" class="nav-link">History</a>
+        <a href="<?= url('/admin/buildings.php') ?>" class="nav-link">Buildings</a>
+        <a href="<?= url('/admin/meters.php') ?>" class="nav-link">Meters</a>
+        <a href="<?= url('/admin/users.php') ?>" class="nav-link">Users</a>
+        <a href="<?= url('/admin/alerts.php') ?>" class="nav-link">Alerts</a>
+        <a href="<?= url('/admin/settings.php') ?>" class="nav-link">Settings</a>
       <?php else: ?>
-        <a href="/user/submit-v1.php" class="nav-link">Submit (V1)</a>
-        <a href="/user/submit-v2.php" class="nav-link">Submit (V2)</a>
-        <a href="/user/history.php" class="nav-link">History</a>
+        <a href="<?= url('/user/submit-v1.php') ?>" class="nav-link">Submit (V1)</a>
+        <a href="<?= url('/user/submit-v2.php') ?>" class="nav-link">Submit (V2)</a>
+        <a href="<?= url('/user/history.php') ?>" class="nav-link">History</a>
       <?php endif; ?>
     </div>
     <?php endif; ?>

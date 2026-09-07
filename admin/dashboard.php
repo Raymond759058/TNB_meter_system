@@ -58,13 +58,13 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
   <?php endforeach; endif; ?>
   <div class="divider"></div>
-  <a href="/admin/alerts.php" class="btn btn-outline btn-sm">View all alerts</a>
+  <a href="<?= url('/admin/alerts.php') ?>" class="btn btn-outline btn-sm">View all alerts</a>
 </div>
 
 <div class="card">
   <h2>Missing-reading check</h2>
   <p class="hint">In production this runs automatically via <code>cron/check-missing-readings.php</code> on a schedule after the deadline. Trigger it manually to test it now.</p>
-  <form method="post" action="/admin/alerts.php">
+  <form method="post" action="<?= url('/admin/alerts.php') ?>">
     <input type="hidden" name="action" value="run_missing_check">
     <button class="btn btn-amber" type="submit">📋 Check now &amp; send reminders</button>
   </form>

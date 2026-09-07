@@ -8,7 +8,7 @@ function current_user_exists(): bool {
 
 if (current_user_exists()) {
     $role = $_SESSION['user']['role'];
-    header('Location: ' . ($role === 'admin' ? '/admin/dashboard.php' : '/user/submit-v1.php'));
+    header('Location: ' . url($role === 'admin' ? '/admin/dashboard.php' : '/user/submit-v1.php'));
     exit;
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'name' => $user['name'],
             'role' => $user['role'],
         ];
-        header('Location: ' . ($user['role'] === 'admin' ? '/admin/dashboard.php' : '/user/submit-v1.php'));
+        header('Location: ' . url($user['role'] === 'admin' ? '/admin/dashboard.php' : '/user/submit-v1.php'));
         exit;
     }
     $error = 'Incorrect username or password.';
@@ -45,7 +45,7 @@ $pageTitle = 'Log in';
 <title>Log in · <?= APP_NAME ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="<?= url('/assets/css/style.css') ?>">
 </head>
 <body>
 <div id="app">

@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    header('Location: /admin/buildings.php');
+    header('Location: ' . url('/admin/buildings.php'));
     exit;
 }
 
@@ -151,7 +151,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Action buttons -->
         <div style="display:flex;gap:6px;margin-top:8px;">
-          <a href="/admin/buildings.php?edit=<?= $b['id'] ?>" class="btn btn-outline btn-sm">✏️ Edit</a>
+          <a href="<?= url('/admin/buildings.php?edit=' . $b['id']) ?>" class="btn btn-outline btn-sm">✏️ Edit</a>
           <form method="post" style="margin:0;">
             <input type="hidden" name="action" value="toggle_building">
             <input type="hidden" name="building_id" value="<?= $b['id'] ?>">
@@ -201,7 +201,7 @@ require_once __DIR__ . '/../includes/header.php';
         <?= $editing ? 'Update building' : 'Add building' ?>
       </button>
       <?php if ($editing): ?>
-        <a href="/admin/buildings.php" class="btn btn-outline" style="flex:0 0 auto;">Cancel</a>
+        <a href="<?= url('/admin/buildings.php') ?>" class="btn btn-outline" style="flex:0 0 auto;">Cancel</a>
       <?php endif; ?>
     </div>
   </form>

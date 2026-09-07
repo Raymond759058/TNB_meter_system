@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $queryArgs = [];
     if (!empty($_GET['meter_id'])) $queryArgs['meter_id'] = (int)$_GET['meter_id'];
     if (!empty($_GET['version']))  $queryArgs['version']  = $_GET['version'];
-    $redirectUrl = '/admin/history.php' . ($queryArgs ? '?' . http_build_query($queryArgs) : '');
+    $redirectUrl = url('/admin/history.php' . ($queryArgs ? '?' . http_build_query($queryArgs) : ''));
 
     header('Location: ' . $redirectUrl);
     exit;
@@ -142,7 +142,7 @@ require_once __DIR__ . '/../includes/header.php';
       <div style="display:flex;gap:4px;">
         <button class="btn btn-primary btn-sm" type="submit" style="padding:8px 14px;">Filter</button>
         <?php if ($filterMeterId || $filterVersion): ?>
-          <a href="/admin/history.php" class="btn btn-outline btn-sm" style="padding:8px 12px;">Reset</a>
+          <a href="<?= url('/admin/history.php') ?>" class="btn btn-outline btn-sm" style="padding:8px 12px;">Reset</a>
         <?php endif; ?>
       </div>
     </div>

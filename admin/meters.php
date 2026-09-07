@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    header('Location: /admin/meters.php');
+    header('Location: ' . url('/admin/meters.php'));
     exit;
 }
 
@@ -83,7 +83,7 @@ require_once __DIR__ . '/../includes/header.php';
 <div class="card">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
     <h2 style="margin:0;">Assign meters to Field Users</h2>
-    <a href="/admin/users.php" class="btn btn-outline btn-sm" style="padding:4px 8px;font-size:11.5px;">Manage users →</a>
+    <a href="<?= url('/admin/users.php') ?>" class="btn btn-outline btn-sm" style="padding:4px 8px;font-size:11.5px;">Manage users →</a>
   </div>
   <p class="hint">A user only sees meters assigned to them when submitting a reading.</p>
   <?php foreach ($users as $u): ?>

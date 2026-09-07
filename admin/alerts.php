@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'run_m
             ? "Sent {$raised} missing-reading reminder(s)."
             : "All meters have today's reading submitted. No reminders needed.");
     }
-    header('Location: /admin/alerts.php');
+    header('Location: ' . url('/admin/alerts.php'));
     exit;
 }
 

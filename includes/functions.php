@@ -139,7 +139,13 @@ function get_photo_url(?string $photoPath): string {
     if (!$photoPath) {
         return '';
     }
-    return str_replace('/tnb-meter-system', $photoPath);
+    // Clean any doubled base path
+    $path = str_replace('/tnb-meter-system/tnb-meter-system/', '/tnb-meter-system/', $photoPath);
+    // If it is stored relative or starting with /uploads/, ensure APP_BASE is prefixed
+    if (strpos($path, '/uploads/') === 0 && defined('APP_BASE') && APP_BASE !== '') {
+        $path = APP_BASE . $path;
+    }
+    return $path;
 }
 
 /** Save an uploaded/captured photo (base64 data URL or $_FILES entry) and return its stored path. */

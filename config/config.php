@@ -24,6 +24,16 @@ if (PHP_SAPI === 'cli') {
 define('APP_BASE', $appBase);
 define('UPLOAD_URL', ($appBase !== '' ? $appBase : '') . '/uploads/meter_photos/');
 
+/**
+ * Generate a root-relative URL prepended with the application base path.
+ */
+if (!function_exists('url')) {
+    function url(string $path = ''): string {
+        $clean = '/' . ltrim($path, '/');
+        return (defined('APP_BASE') ? APP_BASE : '') . $clean;
+    }
+}
+
 // Max upload size for a meter photo, in bytes (5 MB).
 define('MAX_UPLOAD_BYTES', 5 * 1024 * 1024);
 

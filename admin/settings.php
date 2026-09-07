@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$limit, $deadline, $phone]);
 
     flash('success', 'Settings saved.');
-    header('Location: /admin/settings.php');
+    header('Location: ' . url('/admin/settings.php'));
     exit;
 }
 

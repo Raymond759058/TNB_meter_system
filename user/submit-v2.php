@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             check_over_usage($meterId, $meter['name'], $today, $readingValue);
 
             flash('success', "Reading saved for {$meter['name']}, " . date('d M Y H:i') . ' (Malaysia time) — live photo verified.');
-            header('Location: /user/submit-v2.php');
+            header('Location: ' . url('/user/submit-v2.php'));
             exit;
         }
     }
@@ -105,5 +105,5 @@ require_once __DIR__ . '/../includes/header.php';
 </div>
 <?php endif; ?>
 
-<script src="/assets/js/camera-v2.js"></script>
+<script src="<?= url('/assets/js/camera-v2.js') ?>"></script>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

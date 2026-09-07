@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 flash('success', "User '{$name}' (@{$username}) created successfully.");
-                header('Location: /admin/users.php');
+                header('Location: ' . url('/admin/users.php'));
                 exit;
             }
         }
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
 
                     flash('success', "User '{$name}' updated successfully.");
-                    header('Location: /admin/users.php');
+                    header('Location: ' . url('/admin/users.php'));
                     exit;
                 }
             }
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    header('Location: /admin/users.php' . (isset($_GET['edit']) ? '?edit=' . (int)$_GET['edit'] : ''));
+    header('Location: ' . url('/admin/users.php' . (isset($_GET['edit']) ? '?edit=' . (int)$_GET['edit'] : '')));
     exit;
 }
 
@@ -284,7 +284,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Actions -->
         <div style="display:flex;gap:6px;margin-top:8px;">
-          <a href="/admin/users.php?edit=<?= $uId ?>#user-form" class="btn btn-outline btn-sm">✏️ Edit</a>
+          <a href="<?= url('/admin/users.php?edit=' . $uId) ?>#user-form" class="btn btn-outline btn-sm">✏️ Edit</a>
           <?php if (!$isSelf): ?>
             <form method="post" style="margin:0;" onsubmit="return confirm('Are you sure you want to delete user <?= htmlspecialchars(addslashes($u['name'])) ?>?');">
               <input type="hidden" name="action" value="delete_user">
@@ -387,7 +387,7 @@ require_once __DIR__ . '/../includes/header.php';
         <?= $editingUser ? 'Save changes' : 'Create user' ?>
       </button>
       <?php if ($editingUser): ?>
-        <a href="/admin/users.php" class="btn btn-outline" style="flex:0 0 auto;">Cancel</a>
+        <a href="<?= url('/admin/users.php') ?>" class="btn btn-outline" style="flex:0 0 auto;">Cancel</a>
       <?php endif; ?>
     </div>
   </form>
